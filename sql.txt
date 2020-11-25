@@ -1,0 +1,44 @@
+SELECT a.nombre administrador , b.nombre departamento
+FROM administradores as a
+INNER JOIN departamentos as b 
+on a.departamento_id = b.id
+
+SELECT a.nombre empleado, b.nombre departamento
+FROM empleados as a
+INNER JOIN departamentos as b 
+on a.departamento_id = b.id
+
+select fecha, administrador_id admin, tarea_id tarea, sum(dedicacion) dedicacion
+from proyectos
+group by fecha, admin, tarea
+order by fecha, admin, tarea desc
+
+
+
+where administrador_id = 1
+and fecha = date_format('2013-11-25', '%Y-%c-%d')
+
+
+
+//********seleccionar las distintas semanas que hay en proyectos
+SELECT DISTINCT fecha
+FROM proyectos
+order by fecha desc
+
+//********seleccionar los administradores
+select nombre
+from administradores
+order by nombre
+
+//********seleccionar las tareas
+select nombre 
+from tareas 
+order by nombre
+
+//********seleccionar las horas de dedicacion para cada manager  y cada tarea
+//********tener en cuenta las fechas que no apareen se debe pober valor cero
+select fecha, administrador_id admin, tarea_id tarea, sum(dedicacion) dedicacion
+from proyectos
+group by fecha, administrador_id, tarea_id
+order by fecha, administrador_id, tarea_id desc
+
